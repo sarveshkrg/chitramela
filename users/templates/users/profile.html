@@ -1,0 +1,23 @@
+{% extends 'myapp/base.html' %}
+{% block title %}{{ user.username }}{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-3" style="padding:5%">
+            <img src="{{ user.profile.image.url }}" alt="Profile-Picture" style="border-radius: 50%; width:200px; height:200px; box-shadow: 0 0 5px 0; margin-left: auto; margin-right: auto; display: block;">
+            <h4 style="text-align:center;">{{ user.username }}</h4>
+            <h5 style="text-align:center;">{{ user.email }}</h5>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-7 content-default make-center">
+            <h2 class="text-center">UPDATE</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
