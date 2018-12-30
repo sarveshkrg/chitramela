@@ -1,3 +1,9 @@
+*{
+	box-sizing: border-box;
+}
+p,h1,h2,h3,h4,h5,h6{
+	color: #555;
+}
 body{
 	background: url("images/back.png") no-repeat center center fixed;
 	background-size: cover;
@@ -18,7 +24,4 @@ body{
 .content-default{
 	background-color: rgba(255,255,255,0.6);
 	padding: 25px;
-}
-.row{
-	margin: 0;
 }

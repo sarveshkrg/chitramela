@@ -1,0 +1,20 @@
+{% extends 'myapp/base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="post">
+                <h4>{{ object.title }}</h4>
+                <div class="indent">{{ object.author }} - {{ object.date_posted }}</div>
+                <hr>
+                <p>{{ object.content }}</p>
+            </div>
+            {% if object.author == user %}
+                <a href="{% url 'post-update' object.id %}" class="btn btn-primary ml-3">Update</a>
+                <a href="{% url 'post-delete' object.id %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+        </div>
+        <div class="col-sm-4"></div>
+    </div>   
+{% endblock %}

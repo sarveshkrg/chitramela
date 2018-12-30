@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="z-index: 1;">
               <!-- Brand -->
-              <a class="navbar-brand" href="{% url 'login' %}" style="font-family: 'Pacifico', cursive;">Chitra-Mela</a>
+              <a class="navbar-brand" href="{% url 'index' %}" style="font-family: 'Pacifico', cursive;">Chitra-Mela</a>
     
               <!-- Toggler/collapsibe Button -->
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -28,21 +28,29 @@
               <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'login' %}"><span class="oi" data-glyph="home" title="home" aria-hidden="true"></span> HOME</a>
+                    <a class="nav-link" href="{% url 'index' %}"><span class="oi" data-glyph="home" title="home" aria-hidden="true"></span> HOME</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}"><span class="oi" data-glyph="double-quote-serif-left" title="double-quote-serif-left" aria-hidden="true"></span> ABOUT</a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav">  
                   {% if user.is_authenticated %}
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'logout' %}"><span class="oi" data-glyph="lock-unlocked" title="lock-unlocked" aria-hidden="true"></span> LOGOUT</a>
+                      <a class="nav-link" href="{% url 'post-create' %}"><span class="oi" data-glyph="image" title="image" aria-hidden="true"></span> NEW POST</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'profile' %}"><span class="oi" data-glyph="person" title="person" aria-hidden="true"></span> PROFILE</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}"><span class="oi" data-glyph="account-logout" title="account-logout" aria-hidden="true"></span> LOGOUT</a>
                     </li>
                   {% else %}
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'register' %}"><span class="oi" data-glyph="person" title="person" aria-hidden="true"></span> SIGN UP</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'login' %}"><span class="oi" data-glyph="lock-unlocked" title="lock-unlocked" aria-hidden="true"></span> LOGIN</a>
+                      <a class="nav-link" href="{% url 'login' %}"><span class="oi" data-glyph="account-login" title="account-login" aria-hidden="true"></span> LOGIN</a>
                     </li>
                   {% endif %}
                 </ul>
@@ -54,4 +62,11 @@
           {% endblock %}
         </div>
     </body>
+    <footer class="container-fluid">
+      <div class="container border-top mt-3 pt-2 text-primary">
+        Copyright &copy; - 2019
+        All rights are reserved for Chitra-Mela<br>
+        Developed by Sarvesh Kumar
+      </div>
+    </footer>
 </html>
