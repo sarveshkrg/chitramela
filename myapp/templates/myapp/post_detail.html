@@ -4,15 +4,19 @@
 {% block body %}
     <div class="row">
         <div class="col-sm-8">
-            <div class="post">
+            <div class="post mt-3">
+                <img class="float-left" src="{{ post.author.profile.image.url }}" alt="author" width="70px" height="70px" style="border-radius:50%;"/>
                 <h4>{{ object.title }}</h4>
-                <div class="indent">{{ object.author }} - {{ object.date_posted }}</div>
+                <div class="indent"> <a href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a> - {{ object.date_posted }}</div>
                 <hr>
                 <p>{{ object.content }}</p>
+                {% if post.post_image %}
+                    <img src="{{ post.post_image.url }}" alt="post_image" width="100%"/>
+                {% endif %}
             </div>
             {% if object.author == user %}
-                <a href="{% url 'post-update' object.id %}" class="btn btn-primary ml-3">Update</a>
-                <a href="{% url 'post-delete' object.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'post-update' object.id %}" class="btn btn-primary ml-1 mt-4">Update</a>
+                <a href="{% url 'post-delete' object.id %}" class="btn btn-danger mt-4">Delete</a>
             {% endif %}
         </div>
         <div class="col-sm-4"></div>
